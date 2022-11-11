@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unit5.Game.Scripting;
 
 namespace Unit5.Game.Casting
 {
@@ -10,14 +11,16 @@ namespace Unit5.Game.Casting
     /// </summary>
     public class Snake : Actor
     {
-        private List<Actor> _segments = new List<Actor>();
+        protected List<Actor> _segments = new List<Actor>();
+        private int _index = 0;
+        private Color _color;
 
         /// <summary>
         /// Constructs a new instance of a Snake.
         /// </summary>
-        public Snake()
+        public Snake(int position, Color color1, Color color2)
         {
-            PrepareBody();
+            PrepareBody(position, color1, color2);
         }
 
         /// <summary>
@@ -64,7 +67,7 @@ namespace Unit5.Game.Casting
                 segment.SetPosition(position);
                 segment.SetVelocity(velocity);
                 segment.SetText("#");
-                segment.SetColor(Constants.GREEN);
+                segment.SetColor(_color);
                 _segments.Add(segment);
             }
         }
@@ -84,6 +87,14 @@ namespace Unit5.Game.Casting
                 Point velocity = previous.GetVelocity();
                 trailing.SetVelocity(velocity);
             }
+
+            this._index += 1;
+
+            if (this._index == Constants.GROWTAIL)
+            {
+                GrowTail(1);
+                _index = 0;
+            }
         }
 
         /// <summary>
@@ -98,17 +109,18 @@ namespace Unit5.Game.Casting
         /// <summary>
         /// Prepares the snake body for moving.
         /// </summary>
-        private void PrepareBody()
+        private void PrepareBody(int xPos, Color color1, Color color2)
         {
-            int x = Constants.MAX_X / 2;
+            int x = xPos * (Constants.MAX_X) / 4;
             int y = Constants.MAX_Y / 2;
 
             for (int i = 0; i < Constants.SNAKE_LENGTH; i++)
             {
-                Point position = new Point(x - i * Constants.CELL_SIZE, y);
-                Point velocity = new Point(1 * Constants.CELL_SIZE, 0);
+                Point position = new Point(x, y + i * Constants.CELL_SIZE);
+                Point velocity = new Point(0, - 1 * Constants.CELL_SIZE);
                 string text = i == 0 ? "8" : "#";
-                Color color = i == 0 ? Constants.YELLOW : Constants.GREEN;
+                Color color = i == 0 ? color1 : color2;
+                _color = color2;
 
                 Actor segment = new Actor();
                 segment.SetPosition(position);
@@ -117,6 +129,11 @@ namespace Unit5.Game.Casting
                 segment.SetColor(color);
                 _segments.Add(segment);
             }
+        }
+
+        public void ChangeColor(Color color)
+        {
+            _color = color;
         }
     }
 }
