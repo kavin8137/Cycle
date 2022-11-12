@@ -4,15 +4,15 @@ using System;
 namespace Unit5.Game.Casting
 {
     /// <summary>
-    /// <para>A tasty item that snakes like to eat.</para>
+    /// <para>A banner display the snake status.</para>
     /// <para>
-    /// The responsibility of Food is to select a random position and points that it's worth.
+    /// The responsibility of Banner is to display the status of the snake.
     /// </para>
     /// </summary>
     public class Banner : Actor
     {
         /// <summary>
-        /// Constructs a new instance of an Food.
+        /// Constructs a new instance of a Banner.
         /// </summary>
         public Banner(int xPos, string message, Color color)
         {  

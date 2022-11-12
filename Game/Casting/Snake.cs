@@ -88,8 +88,12 @@ namespace Unit5.Game.Casting
                 trailing.SetVelocity(velocity);
             }
 
+            // counting move for the snake
             this._index += 1;
 
+            // if the move of the snake reaches to GROWTAIL
+            // the snake tail will increase by one
+            // the step count will be reset to zero.
             if (this._index == Constants.GROWTAIL)
             {
                 GrowTail(1);
@@ -131,6 +135,7 @@ namespace Unit5.Game.Casting
             }
         }
 
+        // changing the segment's color
         public void ChangeColor(Color color)
         {
             _color = color;
