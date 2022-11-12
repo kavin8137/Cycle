@@ -1,10 +1,10 @@
 # Cycle
 Cycle is a game where the players try to cut each other off using cycles
 that leave a trail behind them. A specialties of this game is to have an
-additional feature that allow their cycle to grow quicker by collecting 
-points with food. Food will be randomly generated at a random location.
-This ascend the level of challenge as the plays have to get around each
-other for getting the food. Enjoy the competition!
+additional feature that allow the players increase their cycle quicker by 
+collecting points with food. Food will be randomly generated at a random 
+location. This ascend the level of challenge as the plays have to get 
+around each other for getting the food. Enjoy the competition!
 
 ## Getting Started
 Make sure you have dotnet 6.0 or newer installed on your machine. Open
