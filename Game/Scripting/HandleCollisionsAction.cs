@@ -84,7 +84,7 @@ namespace Unit5.Game.Scripting
 
             foreach (Actor segment1 in body1)
             {
-                if (segment1.GetPosition().Equals(head.GetPosition()) || segment1.GetPosition().Equals(head.GetPosition()))
+                if (segment1.GetPosition().Equals(head1.GetPosition()) || segment1.GetPosition().Equals(head.GetPosition()))
                 {
                     _isGameOver = true;
                 }
